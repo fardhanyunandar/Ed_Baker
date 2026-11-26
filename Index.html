@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ed Baker Bakehouse BSD | Premium Steamed Cake, Less Sugar</title>
+<meta name="description" content="Ed Baker Bakehouse, pionir kue kukus premium di Indonesia. Dibuat dengan cara dikukus, less sugar, tanpa pengawet. Dapur pusat di BSD City, Tangerang.">
+<meta name="theme-color" content="#1E5A3F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Ganti warna brand di sini */
+  --green:#1E5A3F; --green-dark:#15412D; --mint:#EDF4EF; --mocha:#4B2E22;
+  --ink:#17231C; --muted:#56645B; --line:#D5E2D9; --white:#FFFFFF;
+  --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --wrap:1120px; --header:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 12px);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.65;font-size:1rem;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(100% - 2.5rem,var(--wrap));margin-inline:auto}
+section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,6.4vw,4.2rem)}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:1rem}
+h3{font-size:1.25rem}
+p{margin:0 0 1rem}
+.lead{font-size:clamp(1.02rem,2vw,1.18rem);color:var(--muted);max-width:56ch}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+
+/* Tombol */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:999px;font-weight:600;font-size:.97rem;text-decoration:none;border:2px solid var(--green);background:var(--green);color:var(--white);transition:background .25s,color .25s;cursor:pointer}
+.btn:hover{background:var(--green-dark);border-color:var(--green-dark)}
+.btn.ghost{background:transparent;color:var(--green)}
+.btn.ghost:hover{background:var(--green);color:var(--white)}
+.btn.light{background:var(--white);color:var(--green);border-color:var(--white)}
+.btn.light:hover{background:var(--mint);border-color:var(--mint)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;height:var(--header);background:var(--white);z-index:50;border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+header.scrolled{border-color:var(--line);box-shadow:0 6px 20px rgba(21,65,45,.06)}
+.bar{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--green)}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--white);display:grid;place-items:center;font-style:normal;font-size:1.05rem}
+nav ul{list-style:none;display:flex;align-items:center;gap:1.8rem;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--ink);position:relative}
+nav a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav a:not(.btn):hover::after{transform:scaleX(1)}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer;padding:0;position:relative}
+.burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--green);border-radius:2px;transition:transform .3s,opacity .3s,top .3s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+
+/* Hero */
+.hero{padding-top:calc(var(--header) + clamp(2rem,6vw,4.5rem));padding-bottom:clamp(3rem,7vw,5rem)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1{margin-bottom:1.2rem;color:var(--green-dark)}
+.hero .lead{margin-bottom:1.8rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.stage{background:var(--green);border-radius:28px;aspect-ratio:1/1;display:grid;place-items:center;padding:8%;position:relative;overflow:hidden}
+.stage svg{width:100%;height:auto;overflow:visible}
+.steam path{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;opacity:.55}
+
+/* Pita nilai */
+.band{background:var(--green);color:var(--white);padding:1.6rem 0}
+.band ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+.band li{font-weight:500;font-size:.98rem}
+
+/* Tentang */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.facts{display:grid;gap:0;border-top:1px solid var(--line)}
+.facts div{padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.facts b{display:block;font-family:var(--serif);font-size:1.1rem;color:var(--green-dark);margin-bottom:.15rem;font-weight:600}
+.facts span{color:var(--muted);font-size:.97rem}
+
+/* Produk */
+.alt{background:var(--mint)}
+.head{max-width:60ch;margin-bottom:2.5rem}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.product{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:1.6rem;display:flex;flex-direction:column;gap:.8rem}
+.dot{width:46px;height:46px;border-radius:50%;margin-bottom:.4rem}
+.product p{color:var(--muted);margin:0;font-size:.97rem}
+
+/* Harga */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.sizes{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.sizes li{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.sizes strong{font-weight:600}
+.sizes span{color:var(--muted)}
+.price-card{background:var(--green);color:var(--white);border-radius:24px;padding:clamp(1.6rem,4vw,2.4rem)}
+.price-card h3{margin-bottom:.4rem}
+.price-card .amount{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:600;margin:.4rem 0}
+.price-card p{opacity:.9;font-size:.97rem}
+.note{font-size:.85rem;color:var(--muted);margin-top:1rem}
+
+/* Cara pesan */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--green);padding-top:1rem}
+.steps li::before{content:counter(s);font-family:var(--serif);font-size:1.6rem;color:var(--green);font-weight:600;display:block;margin-bottom:.3rem}
+.steps h3{margin-bottom:.4rem}
+.steps p{color:var(--muted);font-size:.97rem}
+
+/* Lokasi */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.contact{list-style:none;margin:0 0 1.6rem;padding:0;border-top:1px solid var(--line)}
+.contact li{padding:1rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:1rem}
+.contact b{font-weight:600;color:var(--green-dark)}
+.contact a{color:var(--green);font-weight:500}
+.partner{background:var(--green);color:var(--white);border-radius:24px;padding:clamp(1.6rem,4vw,2.4rem)}
+.partner h3{margin-bottom:.6rem}
+.partner p{opacity:.92}
+
+/* Footer */
+footer{background:var(--green-dark);color:#DCE9E1;padding:2.5rem 0;font-size:.9rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem}
+footer a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+footer p{margin:0;max-width:62ch}
+
+/* Responsif */
+@media (max-width:900px){
+  .hero-grid,.about,.price-grid,.loc{grid-template-columns:1fr}
+  .products,.steps{grid-template-columns:1fr}
+  .stage{max-width:440px;width:100%;margin-inline:auto}
+  .band ul{grid-template-columns:1fr 1fr}
+  .burger{display:block}
+  nav{position:fixed;top:var(--header);left:0;right:0;background:var(--white);border-bottom:1px solid var(--line);padding:1rem 1.25rem 1.5rem;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s}
+  nav.open{opacity:1;transform:none;visibility:visible}
+  nav ul{flex-direction:column;align-items:stretch;gap:0}
+  nav li a:not(.btn){display:block;padding:.9rem 0;border-bottom:1px solid var(--line)}
+  nav a:not(.btn)::after{display:none}
+  nav li:last-child{margin-top:1rem}
+}
+@media (max-width:480px){
+  .wrap{width:min(100% - 2rem,var(--wrap))}
+  .cta .btn{width:100%}
+  .contact li{grid-template-columns:1fr;gap:.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a href="#top" class="logo" aria-label="Ed Baker Bakehouse"><i>e</i>ed baker</a>
+    <button class="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav id="menu" aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#harga">Harga</a></li>
+        <li><a href="#pesan">Cara pesan</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+        <li><a class="btn" href="https://wa.me/6285819003333" target="_blank" rel="noopener">Pesan via WhatsApp</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 data-hero>Dikukus, bukan dipanggang.</h1>
+      <p class="lead" data-hero>Ed Baker Bakehouse membuat cake kukus premium dengan gula lebih sedikit dan tanpa pengawet. Dapur pusat kami ada di BSD City, Tangerang.</p>
+      <div class="cta" data-hero>
+        <a class="btn" href="https://wa.me/6285819003333" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          Pesan via WhatsApp
+        </a>
+        <a class="btn ghost" href="#produk">Lihat produk</a>
+      </div>
+    </div>
+    <div class="stage" data-hero aria-hidden="true">
+      <svg viewBox="0 0 320 300" role="img">
+        <g class="steam">
+          <path d="M125 110c-12-18 12-30 0-50"/>
+          <path d="M160 100c-12-18 12-30 0-50"/>
+          <path d="M195 110c-12-18 12-30 0-50"/>
+        </g>
+        <ellipse cx="160" cy="262" rx="132" ry="18" fill="#15412D"/>
+        <rect x="56" y="140" width="208" height="112" rx="16" fill="#6B4332"/>
+        <rect x="56" y="170" width="208" height="14" fill="#EBD9C3"/>
+        <rect x="56" y="210" width="208" height="14" fill="#EBD9C3"/>
+        <rect x="56" y="124" width="208" height="30" rx="15" fill="#F3E7D6"/>
+        <circle cx="160" cy="120" r="14" fill="#3A231A"/>
+        <g fill="#3A231A">
+          <rect x="74" y="190" width="10" height="4" rx="2"/><rect x="108" y="236" width="10" height="4" rx="2"/>
+          <rect x="146" y="196" width="10" height="4" rx="2"/><rect x="186" y="238" width="10" height="4" rx="2"/>
+          <rect x="226" y="192" width="10" height="4" rx="2"/><rect x="98" y="150" width="10" height="4" rx="2"/>
+          <rect x="214" y="150" width="10" height="4" rx="2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <ul>
+      <li>Less sugar</li>
+      <li>Tanpa pengawet</li>
+      <li>Tanpa rum</li>
+      <li>Bahan non-trans fat</li>
+    </ul>
+  </div>
+</div>
+
+<section id="tentang">
+  <div class="wrap about">
+    <div data-reveal>
+      <h2>Cake klasik dengan cara yang lebih ringan</h2>
+      <p class="lead">Kue mocha dan black forest sudah lama jadi favorit keluarga. Ed Baker mengolahnya lewat proses kukus agar teksturnya padat, lembut, dan lembap, tanpa terasa berminyak.</p>
+      <p class="lead">Kami menyebut diri pionir kue kukus premium di Indonesia, dengan formula less sugar agar karakter bahan premium tetap terasa.</p>
+    </div>
+    <div class="facts" data-reveal>
+      <div><b>Metode kukus</b><span>Tekstur padat tapi lembut, buttercream terasa ringan.</span></div>
+      <div><b>Aman untuk Muslim</b><span>Semua kue dibuat tanpa rum. Versi dengan rum tersedia atas permintaan, dengan produksi terpisah.</span></div>
+      <div><b>Dapur pusat di BSD</b><span>Pengiriman ke BSD, serta drop point di Jakarta Selatan dan Jakarta Timur.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="produk" class="alt">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <h2>Tiga varian rasa</h2>
+      <p class="lead">Lini cake kukus Ed Baker saat ini terdiri dari tiga rasa. Semuanya tersedia dalam beberapa ukuran.</p>
+    </div>
+    <div class="products">
+      <article class="product" data-reveal>
+        <div class="dot" style="background:#C9A27F"></div>
+        <h3>Classic Mocha Cake</h3>
+        <p>Empat lapis kue dengan buttercream mocha yang ringan dan creamy, sisi berlapis meses cokelat, dan sentuhan karamel. Rasa nostalgia yang manisnya pas.</p>
+      </article>
+      <article class="product" data-reveal>
+        <div class="dot" style="background:#2F3B7A"></div>
+        <h3>Blue Forest</h3>
+        <p>Dark chocolate couverture berpadu blueberry asli, dengan lapisan ganache dan chocolate sponge. Segar asam manis, cokelatnya tetap intens.</p>
+      </article>
+      <article class="product" data-reveal>
+        <div class="dot" style="background:#4B2E22"></div>
+        <h3>Classic Mocha Nougat</h3>
+        <p>Varian ketiga dari lini cake kukus Ed Baker. Tanyakan detail rasa dan ketersediaannya langsung lewat WhatsApp atau GoFood.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="harga">
+  <div class="wrap price-grid">
+    <div data-reveal>
+      <h2>Ukuran dan harga</h2>
+      <ul class="sizes">
+        <li><strong>Big</strong><span>18 x 18 cm</span></li>
+        <li><strong>Small</strong><span>18 x 8,5 cm</span></li>
+        <li><strong>Mini</strong><span>8 x 8 cm</span></li>
+      </ul>
+      <p class="note">Harga berbeda menurut rasa dan ukuran. Untuk daftar harga terbaru, hubungi WhatsApp atau cek GoFood.</p>
+    </div>
+    <div class="price-card" data-reveal>
+      <h3>Double Mood</h3>
+      <p>Dua mini cake, Classic Mocha dan Blue Forest, dalam satu box dengan tutup transparan. Cocok untuk mencicipi dua rasa sekaligus.</p>
+      <div class="amount">Rp179.900</div>
+      <a class="btn light" href="https://wa.me/6285819003333?text=Halo%20Ed%20Baker%2C%20saya%20mau%20pesan%20Double%20Mood" target="_blank" rel="noopener">Pesan Double Mood</a>
+      <p class="note" style="color:#DCE9E1">Harga berdasarkan ulasan April 2025 dan bisa berubah.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pesan" class="alt">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <h2>Cara memesan</h2>
+      <p class="lead">Tiga langkah, tanpa ribet.</p>
+    </div>
+    <ol class="steps">
+      <li data-reveal><h3>Pilih rasa dan ukuran</h3><p>Tentukan varian dan ukuran yang cocok untuk momen kamu.</p></li>
+      <li data-reveal><h3>Kirim pesanan</h3><p>Pesan lewat WhatsApp, idealnya maksimal H-1 sebelum pengiriman, atau cari Ed Baker Bakehouse di GoFood.</p></li>
+      <li data-reveal><h3>Terima kuenya</h3><p>Kue dikemas aman dalam box, lalu dikirim atau diambil sesuai area layanan.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="lokasi">
+  <div class="wrap loc">
+    <div data-reveal>
+      <h2>Lokasi dan kontak</h2>
+      <ul class="contact">
+        <li><b>Alamat</b><span>Ruko Northridge unit A1-22, Lengkong Kulon, Pagedangan, BSD City, Banten 15310</span></li>
+        <li><b>WhatsApp</b><a href="https://wa.me/6285819003333" target="_blank" rel="noopener">0858-1900-3333</a></li>
+        <li><b>Instagram</b><a href="https://www.instagram.com/edbakerjakarta/" target="_blank" rel="noopener">@edbakerjakarta</a></li>
+        <li><b>TikTok</b><a href="https://www.tiktok.com/@edbakerjakarta" target="_blank" rel="noopener">@edbakerjakarta</a></li>
+        <li><b>Jam buka</b><span>Hubungi kami untuk jam operasional terbaru.</span></li>
+      </ul>
+      <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Ed+Baker+Bakehouse+Northridge+BSD+City" target="_blank" rel="noopener">Buka di Google Maps</a>
+    </div>
+    <div class="partner" data-reveal>
+      <h3>Tertarik bermitra?</h3>
+      <p>Ed Baker membuka informasi kemitraan dan franchise. Hubungi tim manajemen lewat pesan langsung Instagram @edbakerjakarta.</p>
+      <a class="btn light" href="https://www.instagram.com/edbakerjakarta/" target="_blank" rel="noopener">Hubungi via Instagram</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p>&copy; <span id="year">2026</span> Ed Baker Bakehouse. Halaman profil ini dibuat dari informasi publik. Menu, harga, dan jam operasional dapat berubah.</p>
+    <a href="#top">Kembali ke atas</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var header=document.querySelector('header'),
+      burger=document.querySelector('.burger'),
+      menu=document.getElementById('menu');
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>10)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  function setMenu(open){
+    menu.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    burger.setAttribute('aria-label',open?'Tutup menu':'Buka menu');
+  }
+  burger.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  window.addEventListener('resize',function(){if(window.innerWidth>900)setMenu(false)});
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!window.gsap||reduce)return; /* tanpa GSAP, konten tetap tampil normal */
+
+  if(window.ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
+
+  /* Satu urutan masuk di hero */
+  gsap.from('[data-hero]',{y:24,opacity:0,duration:.8,ease:'power2.out',stagger:.14});
+
+  /* Uap kukus halus di atas cake */
+  gsap.utils.toArray('.steam path').forEach(function(p,i){
+    gsap.fromTo(p,{y:6,opacity:0},{y:-14,opacity:.55,duration:2.4,ease:'sine.inOut',repeat:-1,delay:i*.5,yoyo:true});
+  });
+
+  /* Reveal ringan saat scroll */
+  if(window.ScrollTrigger){
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.from(el,{y:18,opacity:0,duration:.7,ease:'power2.out',
+        scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+    });
+  }
+})();
+</script>
+</body>
+</html>
